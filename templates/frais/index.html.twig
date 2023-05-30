@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Frais index{% endblock %}
+
+{% block body %}
+    <h1>Frais index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Frais</th>
+                <th>Datecreation</th>
+                <th>Fraisdate</th>
+                <th>Datemaj</th>
+                <th>Fraistype</th>
+                <th>Fraisuser</th>
+                <th>Gestuser</th>
+                <th>Fichier</th>
+                <th>Etat</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for frai in frais %}
+            <tr>
+                <td>{{ frai.id }}</td>
+                <td>{{ frai.frais }}</td>
+                <td>{{ frai.datecreation ? frai.datecreation|date('Y-m-d') : '' }}</td>
+                <td>{{ frai.fraisdate ? frai.fraisdate|date('Y-m-d') : '' }}</td>
+                <td>{{ frai.datemaj ? frai.datemaj|date('Y-m-d') : '' }}</td>
+                <td>{{ frai.fraistype }}</td>
+                <td>{{ frai.fraisuser }}</td>
+                <td>{{ frai.gestuser }}</td>
+                <td>{{ frai.fichier }}</td>
+                <td>{{ frai.etat }}</td>
+                <td>
+                    <a href="{{ path('app_frais_show', {'id': frai.id}) }}">show</a>
+                    <a href="{{ path('app_frais_edit', {'id': frai.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_frais_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Frais{% endblock %}
+
+{% block body %}
+    <h1>Frais</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ frai.id }}</td>
+            </tr>
+            <tr>
+                <th>Frais</th>
+                <td>{{ frai.frais }}</td>
+            </tr>
+            <tr>
+                <th>Datecreation</th>
+                <td>{{ frai.datecreation ? frai.datecreation|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Fraisdate</th>
+                <td>{{ frai.fraisdate ? frai.fraisdate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Datemaj</th>
+                <td>{{ frai.datemaj ? frai.datemaj|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Fraistype</th>
+                <td>{{ frai.fraistype }}</td>
+            </tr>
+            <tr>
+                <th>Fraisuser</th>
+                <td>{{ frai.fraisuser }}</td>
+            </tr>
+            <tr>
+                <th>Gestuser</th>
+                <td>{{ frai.gestuser }}</td>
+            </tr>
+            <tr>
+                <th>Fichier</th>
+                <td>{{ frai.fichier }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ frai.etat }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_frais_index') }}">back to list</a>
+
+    <a href="{{ path('app_frais_edit', {'id': frai.id}) }}">edit</a>
+
+    {{ include('frais/_delete_form.html.twig') }}
+{% endblock %}
